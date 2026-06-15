@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```md
+# Employee Profile Module for HRIS
 
-## Getting Started
+A front-end only employee profile management module built using **Next.js (React)** and **Tailwind CSS**.
 
-First, run the development server:
+---
+
+##  Installation and Setup
+
+### 1. Install dependencies
+```bash
+npm install
+````
+
+### 2. Install required packages
+
+```bash
+npm install react-icons
+```
+
+### 3. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. Open in browser
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+##  State Management Approach
 
-To learn more about Next.js, take a look at the following resources:
+This project uses React's built-in `useState` and `useEffect` hooks for state management.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### States used:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* `image` → stores profile image as Base64 string
+* `contacts` → array of emergency contact objects
+* `errors` → stores validation errors per contact ID
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Why this approach?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Suitable for small to medium single-page applications (ideal for this project since it is a single-page module)
+* Keeps logic simple, component-driven, and easy to maintain
+* No need for external state management libraries
+
+---
+
+## ✅ Validation Handling Strategy
+
+### File Upload Validation
+
+* Allowed file types are: `image/png`, `image/jpeg`
+* Maximum file size is: 2MB
+* Immediate UI feedback for invalid uploads
+
+---
+
+### Emergency Contact Validation
+
+* Triggered on input change
+* Each contact is validated individually
+* Errors are stored per contact ID for precise control
+
+---
+
+##  Persistence Approach
+
+* Uses `localStorage` for data persistence
+* Stores:
+
+  * Profile image (Base64 string format)
+  * Emergency contacts array
+* Data is automatically loaded on component mount using `useEffect`
+
+```
+
