@@ -1,4 +1,3 @@
-```md
 # Employee Profile Module for HRIS
 
 A front-end only employee profile management module built using **Next.js (React)** and **Tailwind CSS**.
@@ -79,5 +78,4 @@ This project uses React's built-in `useState` and `useEffect` hooks for state ma
   * Emergency contacts array
 * Data is automatically loaded on component mount using `useEffect`
 
-```
 
