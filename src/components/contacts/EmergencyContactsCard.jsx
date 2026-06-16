@@ -99,17 +99,19 @@ export default function EmergencyContactsCard() {
   return (
     <section className="border rounded-xl p-6 flex flex-col gap-6 bg-white shadow-sm">
       {/* header */}
-      <header className="flex items-center justify-between">
-        <h2 className="h4">Emergency Contacts</h2>
+      <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="h4 text-center sm:text-left">Emergency Contacts</h2>
 
-        <Button
-          variant="primary"
-          size="sm"
-          className="lg:px-6 lg:py-3 text-xs md:text-sm"
-          onClick={addContact}
-        >
-          Add Contact
-        </Button>
+        <div className="flex justify-center sm:justify-end">
+          <Button
+            variant="primary"
+            size="sm"
+            className="lg:px-6 lg:py-3 text-sm"
+            onClick={addContact}
+          >
+            Add Contact
+          </Button>
+        </div>
       </header>
 
       {/* empty row */}
