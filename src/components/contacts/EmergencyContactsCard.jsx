@@ -123,7 +123,7 @@ export default function EmergencyContactsCard() {
 
       {/* contact list */}
       <div className="flex flex-col gap-4">
-        {contacts.map((contact) => (
+        {contacts.map((contact, index) => (
           <div
             key={contact.id}
             className="border rounded-lg p-4 md:p-5 bg-white hover:shadow-sm transition"
@@ -197,6 +197,7 @@ export default function EmergencyContactsCard() {
                 variant="danger"
                 size="sm"
                 className="px-6"
+                disabled = {contacts.length <= 1}
                 onClick={() => removeContact(contact.id)}
               >
                 Remove
