@@ -14,7 +14,7 @@ export default function EmergencyContactsCard() {
       contactNumber: "",
     },
   ]);
-  
+
   // function to add contact
   const addContact = () => {
     setContacts((prev) => [
@@ -68,19 +68,28 @@ export default function EmergencyContactsCard() {
   const validateContact = (contact) => {
     const errors = {};
 
+    // Full Name
     if (!contact.fullName?.trim()) {
       errors.fullName = "Full name is required";
+    } else if (!/^[a-zA-Z\s]+$/.test(contact.fullName)) {
+      errors.fullName =
+        "Full name cannot contain numbers or special characters";
     }
 
+    // Relationship
     if (!contact.relationship?.trim()) {
       errors.relationship = "Relationship is required";
+    } else if (!/^[a-zA-Z\s]+$/.test(contact.relationship)) {
+      errors.relationship =
+        "Relationship cannot contain numbers or special characters";
     }
 
+    // Contact Number
     if (!contact.contactNumber?.trim()) {
       errors.contactNumber = "Contact number is required";
     } else if (!/^[0-9]+$/.test(contact.contactNumber)) {
       errors.contactNumber = "Numbers only allowed";
-    } else if (contact.contactNumber.length < 10) {
+    } else if (contact.contactNumber.length < 11) {
       errors.contactNumber = "Must be at least 11 digits";
     }
 
@@ -91,14 +100,12 @@ export default function EmergencyContactsCard() {
     <section className="border rounded-xl p-6 flex flex-col gap-6 bg-white shadow-sm">
       {/* header */}
       <header className="flex items-center justify-between">
-        <div>
-          <h2 className="h4">Emergency Contacts</h2>
-        </div>
+        <h2 className="h4">Emergency Contacts</h2>
 
         <Button
           variant="primary"
           size="sm"
-          className="lg:px-6 lg:py-3 text-sm"
+          className="lg:px-6 lg:py-3 text-xs md:text-sm"
           onClick={addContact}
         >
           Add Contact
